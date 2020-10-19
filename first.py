@@ -1,20 +1,8 @@
 import random
 
 def attributeAssigner():
-    attribute=""
-    number=random.randint(0,5)
-    if number==0:
-        attribute="DARK"
-    elif number==1:
-        attribute="LIGHT"
-    elif number==2:
-        attribute="EARTH"
-    elif number==3:
-        attribute="WIND"
-    elif number==4:
-        attribute="FIRE"
-    elif number==5:
-        attribute="WATER"
+    all=("DARK","LIGHT","EARTH","WIND","FIRE","WIND")
+    attribute=random.choice(all)
     return attribute
 
 def card_maker():

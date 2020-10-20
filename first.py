@@ -1,26 +1,5 @@
 import random
-
-def attributeAssigner():
-    all=("DARK","LIGHT","EARTH","WIND","FIRE","WIND")
-    attribute=random.choice(all)
-    return attribute
-
-def card_maker():
-    card=[]
-    att=random.randint(0,10)
-    card.append(att)
-    attr=attributeAssigner()
-    card.append(attr)
-    exploder=random.randint(0,1)
-    card.append(exploder)
-    returner=random.randint(0,1)
-    card.append(returner)
-    reborner=random.randint(0,1)
-    card.append(reborner)
-    drawer=random.randint(0,1)
-    card.append(drawer)
-    print(str(card))
-
+from cardMaker import Card
 
 
 def printGap():
@@ -40,4 +19,5 @@ def display_situation():
 
 display_situation()
 for i in range(0,5):
-    card_maker()
+    c=Card()
+    c.display_card()

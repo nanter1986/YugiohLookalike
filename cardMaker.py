@@ -1,4 +1,8 @@
+import colorama
+from colorama import Fore, Back, Style
 import random
+
+colorama.init()
 
 class Card:
     def __init__(self):    
@@ -20,7 +24,9 @@ class Card:
         print("ATT:"+str(self.att))
         print("ATR:"+self.attr)
         if self.exploder==1:
+            print(Fore.BLUE)
             print("EXPLODER")
+            print(Style.RESET_ALL)
         if self.returner==1:
             print("RETURNER")
         if self.reborner==1:

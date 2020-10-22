@@ -24,7 +24,6 @@ class Card:
         print("ATT:"+str(self.att))
         print("ATR:"+self.attr)
         if self.exploder==1:
-            print()
             print(Fore.RED+"EXPLODER")
         if self.returner==1:
             print(Fore.BLUE+"RETURNER")

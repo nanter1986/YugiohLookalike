@@ -4,6 +4,7 @@ from cardMaker import Card
 
 playerReal=Player()
 playerCom=Player()
+realPlayerTurn=True;
 
 def printGap():
     print("-------------------")
@@ -11,17 +12,33 @@ def printGap():
 
 def display_situation():
     print("You:")
-    print(playerReal.display_situation())
+    print(playerReal.displayPlayer())
     printGap()
     print("Com:")
-    print(playerCom.display_situation())
+    print(playerCom.displayPlayer())
 
 def coinToss():
-    pass
+    print("Coin Toss")
+    realPlayerTurn=random.choice((True,False))
+    if realPlayerTurn==True:
+        print("Your Turn")
+    else:
+        print("Com Turn")
+
 
 def theLoop():
     while playerReal.life>0 and playerCom.life>0:
-        #handCurrent=[Card(),Card(),Card()]
+        if realPlayerTurn==True:
+            print("Your Turn")
+            handCurrent=[Card(),Card(),Card()]
+            input("What")
+            realPlayerTurn==False
+        else:
+            print("Com Turn")
+
+            realPlayerTurn==True
 
 
 display_situation()
+coinToss()
+theLoop()

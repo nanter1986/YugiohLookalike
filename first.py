@@ -38,6 +38,7 @@ def theLoop():
                     Card()
                     ]
             for c in handCurrent:
+                print(str(handCurrent.index(c)+1)+"...")
                 c.display_card()
 
             input("What")

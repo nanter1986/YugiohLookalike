@@ -10,9 +10,10 @@ class Card:
         self.attr=self.attributeAssigner()
         self.exploder=random.randint(0,1)
         self.returner=random.randint(0,1)
-        self.reborner=random.randint(0,1)
+        self.summoner=random.randint(0,1)
         self.drawer=random.randint(0,1)
         print(str(self))
+        #calculateCost()
 
     def attributeAssigner(self):
         all=("DARK","LIGHT","EARTH","WIND","FIRE","WIND")
@@ -27,11 +28,14 @@ class Card:
             print(Fore.RED+"EXPLODER")
         if self.returner==1:
             print(Fore.BLUE+"RETURNER")
-        if self.reborner==1:
-            print(Fore.YELLOW+"REBORNER")
+        if self.summoner==1:
+            print(Fore.YELLOW+"SUMMONER")
         if self.drawer==1:
             print(Fore.GREEN+"DRAWER")
         print("------------------")
+
+    def calculateCost(self):
+        pass
 
 
 

@@ -4,6 +4,8 @@ class Player():
         self.force=100
 
     def displayPlayer(self):
-        print(self.life+"/"+self.force)
+        print(str(self.life)
+                +"/"
+                +str(self.force))
 
 

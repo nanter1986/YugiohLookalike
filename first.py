@@ -30,7 +30,16 @@ def theLoop():
     while playerReal.life>0 and playerCom.life>0:
         if realPlayerTurn==True:
             print("Your Turn")
-            handCurrent=[Card(),Card(),Card()]
+            handCurrent=[
+                    Card(),
+                    Card(),
+                    Card(),
+                    Card(),
+                    Card()
+                    ]
+            for c in handCurrent:
+                c.display_card()
+
             input("What")
             realPlayerTurn==False
         else:

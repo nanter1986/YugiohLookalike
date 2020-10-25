@@ -2,9 +2,10 @@ import random
 from player import Player
 from cardMaker import Card
 
-playerReal=Player()
-playerCom=Player()
-realPlayerTurn=True;
+playerReal = Player()
+playerCom = Player()
+realPlayerTurn = True
+
 
 def printGap():
     print("-------------------")
@@ -17,20 +18,22 @@ def display_situation():
     print("Com:")
     print(playerCom.displayPlayer())
 
+
 def coinToss():
     print("Coin Toss")
-    realPlayerTurn=random.choice((True,False))
-    if realPlayerTurn==True:
+    realPlayerTurn = random.choice((True, False))
+    if realPlayerTurn:
         print("Your Turn")
     else:
         print("Com Turn")
 
 
 def theLoop():
-    while playerReal.life>0 and playerCom.life>0:
-        if realPlayerTurn==True:
+    global realPlayerTurn
+    while playerReal.life > 0 and playerCom.life > 0:
+        if realPlayerTurn:
             print("Your Turn")
-            handCurrent=[
+            handCurrent = [
                     Card(),
                     Card(),
                     Card(),
@@ -41,12 +44,26 @@ def theLoop():
                 print(str(handCurrent.index(c)+1)+"...")
                 c.display_card()
 
-            input("What")
-            realPlayerTurn==False
+            input_selection = input("Choose Card Indexes")
+            check_if_cost_of_selection_within_limits(handCurrent,
+                                                     input_selection)
+            realPlayerTurn = False
         else:
             print("Com Turn")
 
-            realPlayerTurn==True
+            realPlayerTurn = True
+
+
+def check_if_cost_of_selection_within_limits(hand_current, input_selection):
+    cost = 0
+    for s in input_selection:
+        c = hand_current[int(s)-1].cost
+        cost = cost+c
+    print("Total cost:"+str(cost))
+    if cost <= playerReal.force:
+        print("valid cost")
+    else:
+        print("invalid cost")
 
 
 display_situation()

@@ -44,14 +44,35 @@ def theLoop():
                 print(str(handCurrent.index(c)+1)+"...")
                 c.display_card()
 
-            input_selection = input("Choose Card Indexes")
+            the_input=get_input_check_validity()
             check_if_cost_of_selection_within_limits(handCurrent,
-                                                     input_selection)
+                                                     the_input)
             realPlayerTurn = False
         else:
             print("Com Turn")
 
             realPlayerTurn = True
+
+
+def get_input_check_validity():
+    length_valid = False
+    value_valid = False
+    duplication_valid=False
+    input_selection=0
+    while value_valid == False or length_valid == False:
+        input_selection = input("Choose Card Indexes")
+        print("length:"+str(len(input_selection)))
+        if len(input_selection) < 6:
+            length_valid = True
+        value_valid = True
+        for s in input_selection:
+            if int(s) > 5:
+                value_valid = False
+        if length_valid == False:
+            print("incorrect length")
+        if value_valid == False:
+            print("incorrect value")
+    return input_selection
 
 
 def check_if_cost_of_selection_within_limits(hand_current, input_selection):

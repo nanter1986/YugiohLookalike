@@ -44,7 +44,7 @@ def theLoop():
                 print(str(handCurrent.index(c)+1)+"...")
                 c.display_card()
 
-            the_input=get_input_check_validity()
+            the_input = get_input_check_validity()
             check_if_cost_of_selection_within_limits(handCurrent,
                                                      the_input)
             realPlayerTurn = False
@@ -57,9 +57,9 @@ def theLoop():
 def get_input_check_validity():
     length_valid = False
     value_valid = False
-    duplication_valid=False
-    input_selection=0
-    while value_valid == False or length_valid == False:
+    duplication_valid = False
+    input_selection = 0
+    while value_valid == False or length_valid == False or duplication_valid == False:
         input_selection = input("Choose Card Indexes")
         print("length:"+str(len(input_selection)))
         if len(input_selection) < 6:
@@ -72,6 +72,12 @@ def get_input_check_validity():
             print("incorrect length")
         if value_valid == False:
             print("incorrect value")
+        if len(set(input_selection)) == len(input_selection):
+            duplication_valid = True
+            print("no duplicates")
+        else:
+            print("duplicate found")
+    print("out of the loop,validation successful")
     return input_selection
 
 

@@ -1,3 +1,4 @@
+import time
 import colorama
 from colorama import Fore, Back, Style
 import random
@@ -37,6 +38,7 @@ class Card:
         print("COST:"+str(self.cost))
 
         print("------------------")
+        time.sleep(1)
 
     def calculateCost(self):
         a = self.att*10

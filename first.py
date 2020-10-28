@@ -50,12 +50,17 @@ def theLoop():
                 handCurrent,
                 the_input)
             print("correct input returned:"+str(correct_input))
-            move_selected_cards_to_field(the_input, handCurrent)
+            playerField = move_selected_cards_to_field(the_input, handCurrent)
+            check_if_field_contains_combiner(playerField)
             realPlayerTurn = False
         else:
             print("Com Turn")
 
             realPlayerTurn = True
+
+
+def check_if_field_contains_combiner(playerField):
+    pass
 
 
 def move_selected_cards_to_field(correct_input, handCurrent):
@@ -69,6 +74,7 @@ def move_selected_cards_to_field(correct_input, handCurrent):
         playerField.append(handCurrent[i])
     for c in playerField:
         c.display_card()
+    return playerField
 
 
 def get_input_check_validity():

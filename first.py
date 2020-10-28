@@ -45,8 +45,12 @@ def theLoop():
                 c.display_card()
 
             the_input = get_input_check_validity()
-            check_if_cost_of_selection_within_limits(handCurrent,
-                                                     the_input)
+            print("the input from the function:"+the_input)
+            correct_input = check_if_cost_of_selection_within_limits(
+                handCurrent,
+                the_input)
+            print("correct input returned:"+str(correct_input))
+            move_selected_cards_to_field(the_input, handCurrent)
             realPlayerTurn = False
         else:
             print("Com Turn")
@@ -54,12 +58,26 @@ def theLoop():
             realPlayerTurn = True
 
 
+def move_selected_cards_to_field(correct_input, handCurrent):
+    print("correct input"+str(correct_input))
+    print("hand current"+str(handCurrent))
+    playerField = []
+    selections = []
+    for s in correct_input:
+        selections.append(int(s)-1)
+    for i in selections:
+        playerField.append(handCurrent[i])
+    for c in playerField:
+        c.display_card()
+
+
 def get_input_check_validity():
     length_valid = False
     value_valid = False
     duplication_valid = False
     contains_zero_valid = False
-    input_selection = 0
+    input_selection = ""
+    print("input selection before the loop:"+input_selection)
     while value_valid == False\
             or length_valid == False\
             or duplication_valid == False\
@@ -91,6 +109,7 @@ def get_input_check_validity():
         if contains_zero_valid == False:
             print("contains zero")
     print("out of the loop,validation successful")
+    print("output selection out of the loop:"+input_selection)
     return input_selection
 
 

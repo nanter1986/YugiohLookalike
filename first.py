@@ -58,16 +58,27 @@ def get_input_check_validity():
     length_valid = False
     value_valid = False
     duplication_valid = False
+    contains_zero_valid = False
     input_selection = 0
-    while value_valid == False or length_valid == False or duplication_valid == False:
+    while value_valid == False\
+            or length_valid == False\
+            or duplication_valid == False\
+            or contains_zero_valid == False:
         input_selection = input("Choose Card Indexes")
+        # check length
         print("length:"+str(len(input_selection)))
         if len(input_selection) < 6:
             length_valid = True
+        # check value above five
         value_valid = True
         for s in input_selection:
             if int(s) > 5:
                 value_valid = False
+        # check if value contains zero
+        contains_zero_valid = True
+        for s in input_selection:
+            if int(s) == 0:
+                contains_zero_valid = False
         if length_valid == False:
             print("incorrect length")
         if value_valid == False:
@@ -77,6 +88,8 @@ def get_input_check_validity():
             print("no duplicates")
         else:
             print("duplicate found")
+        if contains_zero_valid == False:
+            print("contains zero")
     print("out of the loop,validation successful")
     return input_selection
 

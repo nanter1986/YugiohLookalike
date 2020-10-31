@@ -60,7 +60,23 @@ def theLoop():
 
 
 def check_if_field_contains_combiner(playerField):
+    new_player_field = None
+    new_combined_card = None
+    length_of_field = len(playerField)
+    should_combine = False
+    for c in playerField:
+        if c.combiner == 1:
+            should_combine = True
+    if should_combine == True:
+        list_of_cards_to_combined_card(playerField)
+    else:
+        new_player_field = playerField
+    return new_player_field
+
+
+def list_of_cards_to_combined_card(list):
     pass
+
 
 
 def move_selected_cards_to_field(correct_input, handCurrent):

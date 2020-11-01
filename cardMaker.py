@@ -7,16 +7,36 @@ colorama.init(autoreset=True)
 
 
 class Card:
-    def __init__(self):
-        self.att = random.randint(0, 10)
-        self.attr = self.attributeAssigner()
+    def __init__(self, att=None,
+                 attr=None,
+                 exploder=None,
+                 summoner=None,
+                 booster=None):
+        if att is None:
+            self.att = random.randint(0, 10)
+        else:
+            self.att = att
+        if attr is None:
+            self.attr = self.attributeAssigner()
+        else:
+            self.attr = attr
+        if exploder = None
         self.exploder = random.randint(0, 1)
-        self.combiner = random.randint(0, 1)
-        self.summoner = random.randint(0, 1)
-        self.booster = random.randint(0, 1)
+        else:
+            self.exploder == exploder
+        if combiner is None:
+            self.combiner = random.randint(0, 1)
+        else:
+            self.combiner = combiner
+        if summoner is None:
+            self.summoner = random.randint(0, 1)
+        else:
+            self.summoner = summoner
+        if booster is None:
+            self.booster = random.randint(0, 1)
+        else:
+            self.booster = booster
         self.cost = self.calculateCost()
-        # print(str(self))
-        # calculateCost()
 
     def attributeAssigner(self):
         all = ("DARK", "LIGHT", "EARTH", "WIND", "FIRE", "WIND")

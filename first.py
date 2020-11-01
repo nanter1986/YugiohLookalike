@@ -51,7 +51,8 @@ def theLoop():
                 the_input)
             print("correct input returned:"+str(correct_input))
             playerField = move_selected_cards_to_field(the_input, handCurrent)
-            check_if_field_contains_combiner(playerField)
+            field_after_combiner_check = check_if_field_contains_combiner(
+                playerField)
             realPlayerTurn = False
         else:
             print("Com Turn")
@@ -75,8 +76,29 @@ def check_if_field_contains_combiner(playerField):
 
 
 def list_of_cards_to_combined_card(list):
-    pass
+    card_attack = 0
+    card_attribute = None
+    card_exploder = 0
+    card_combiner = 0
+    card_summoner = 0
+    card_booster = 0
+    list_of_attributes = []
+    for c in list:
+        card_attack = card_attack+c.att
+        if c.summoner == 1:
+            card_summoner = 1
+        if c.combiner == 1:
+            card_combiner = 1
+        if c.exploder == 1:
+            card_exploder = 1
+        if c.booster == 1:
+            card_booster = 1
+        list_of_attributes.append(c.attr)
+    decide_attribute_for_combined_card(list_of_attributes)
 
+
+def decide_attribute_for_combined_card(list_of_attributes):
+    pass
 
 
 def move_selected_cards_to_field(correct_input, handCurrent):

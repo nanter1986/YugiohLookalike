@@ -11,7 +11,8 @@ class Card:
                  attr=None,
                  exploder=None,
                  summoner=None,
-                 booster=None):
+                 booster=None,
+                 combiner=None):
         if att is None:
             self.att = random.randint(0, 10)
         else:
@@ -20,8 +21,8 @@ class Card:
             self.attr = self.attributeAssigner()
         else:
             self.attr = attr
-        if exploder = None
-        self.exploder = random.randint(0, 1)
+        if exploder is None:
+            self.exploder = random.randint(0, 1)
         else:
             self.exploder == exploder
         if combiner is None:

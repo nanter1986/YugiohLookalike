@@ -53,11 +53,18 @@ def theLoop():
             playerField = move_selected_cards_to_field(the_input, handCurrent)
             field_after_combiner_check = check_if_field_contains_combiner(
                 playerField)
+            display_list_of_cards(field_after_combiner_check)
             realPlayerTurn = False
         else:
             print("Com Turn")
 
             realPlayerTurn = True
+
+
+def display_list_of_cards(the_list):
+    for c in the_list:
+        print(str(the_list.index(c)+1)+"...")
+        c.display_card()
 
 
 def check_if_field_contains_combiner(playerField):
@@ -69,13 +76,14 @@ def check_if_field_contains_combiner(playerField):
         if c.combiner == 1:
             should_combine = True
     if should_combine == True:
-        list_of_cards_to_combined_card(playerField)
+        new_player_field = list_of_cards_to_combined_card(playerField)
     else:
         new_player_field = playerField
     return new_player_field
 
 
 def list_of_cards_to_combined_card(list):
+    list_to_return = []
     card_attack = 0
     card_attribute = None
     card_exploder = 0
@@ -94,11 +102,60 @@ def list_of_cards_to_combined_card(list):
         if c.booster == 1:
             card_booster = 1
         list_of_attributes.append(c.attr)
-    decide_attribute_for_combined_card(list_of_attributes)
+    the_attribute = decide_attribute_for_combined_card(list_of_attributes)
+    the_made_card = Card(att=card_attack,
+                         attr=the_attribute,
+                         combiner=card_combiner,
+                         summoner=card_summoner,
+                         exploder=card_exploder,
+                         booster=card_booster)
+    list_to_return.append(the_made_card)
+    return list_to_return
 
 
 def decide_attribute_for_combined_card(list_of_attributes):
-    pass
+    dark_count = 0
+    light_count = 0
+    fire_count = 0
+    water_count = 0
+    earth_count = 0
+    wind_count = 0
+    for c in list_of_attributes:
+        if c == "DARK":
+            dark_count = dark_count+1
+        if c == "LIGHT":
+            light_count = light_count+1
+        if c == "FIRE":
+            fire_count = fire_count+1
+        if c == "WATER":
+            water_count = water_count+1
+        if c == "EARTH":
+            earth_count = earth_count+1
+        if c == "WIND":
+            wind_count = wind_count+1
+    made_list = [dark_count,
+                 light_count,
+                 fire_count,
+                 water_count,
+                 earth_count,
+                 wind_count
+                 ]
+    the_max_value = max(made_list)
+    the_highest_counted_attributes = []
+    if dark_count == the_max_value:
+        the_highest_counted_attributes.append("DARK")
+    if light_count == the_max_value:
+        the_highest_counted_attributes.append("LIGHT")
+    if fire_count == the_max_value:
+        the_highest_counted_attributes.append("FIRE")
+    if water_count == the_max_value:
+        the_highest_counted_attributes.append("WATER")
+    if earth_count == the_max_value:
+        the_highest_counted_attributes.append("EARTH")
+    if wind_count == the_max_value:
+        the_highest_counted_attributes.append("WIND")
+    the_choosen_attribute = random.choice(the_highest_counted_attributes)
+    return the_choosen_attribute
 
 
 def move_selected_cards_to_field(correct_input, handCurrent):

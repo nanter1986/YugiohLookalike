@@ -24,7 +24,7 @@ class Card:
         if exploder is None:
             self.exploder = random.randint(0, 1)
         else:
-            self.exploder == exploder
+            self.exploder = exploder
         if combiner is None:
             self.combiner = random.randint(0, 1)
         else:

@@ -54,6 +54,7 @@ def theLoop():
             field_after_combiner_check = check_if_field_contains_combiner(
                 playerField)
             display_list_of_cards(field_after_combiner_check)
+            do_battle_if_not_the_first_turn()
             realPlayerTurn = False
         else:
             print("Com Turn")

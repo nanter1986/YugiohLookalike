@@ -5,6 +5,7 @@ from cardMaker import Card
 playerReal = Player()
 playerCom = Player()
 realPlayerTurn = True
+turn_count=0
 
 
 def printGap():
@@ -30,8 +31,11 @@ def coinToss():
 
 def theLoop():
     global realPlayerTurn
+    global turn_count
     while playerReal.life > 0 and playerCom.life > 0:
         if realPlayerTurn:
+            turn_count=turn_count+1
+            print("Turn:"+str(turn_count))
             print("Your Turn")
             handCurrent = [
                     Card(),
@@ -58,6 +62,7 @@ def theLoop():
             realPlayerTurn = False
         else:
             print("Com Turn")
+            print("Turn:"+str(turn_count))
 
             realPlayerTurn = True
 

@@ -67,7 +67,10 @@ def theLoop():
             realPlayerTurn = True
 
 def do_battle_if_not_the_first_turn(count):
-    pass
+    if turn_count==0:
+        print("cant battle on 1st turn")
+    else:
+        print("battle begins...")
 
 
 def display_list_of_cards(the_list):
